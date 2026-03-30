@@ -1,0 +1,115 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Daniel Reardon',
+  date: '2026-03-30',
+  title: 'The largest number I could think of',
+  description:
+    'Using real physical quantities — the Planck length, the observable universe, cosmic inflation, and the heat death — I tried to construct the largest number I possibly could. The result is a number so vast it dwarfs a googolplex and makes Graham\'s number look small. But mathematics always wins.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+<h2>Why large numbers?</h2>
+
+<p>I wanted to think of the largest number I possibly could — but with one rule: every quantity involved had to come from real physics.</p>
+
+<p>As an astrophysicist, I deal with extreme scales every day. The Planck length (the smallest meaningful distance in physics) is 1.616 × 10⁻³⁵ metres. The observable universe spans about 93 billion light-years. Time ranges from the ~10⁻⁴⁴ seconds of the Planck time to the heat death of the universe at roughly 10¹⁰⁶ years. These are already staggeringly large or small numbers, and it is one of the joys of physics that you regularly encounter them.</p>
+
+<p>But I wanted to see just how <em>large</em> a number I could build by deliberately combining the most extreme physical quantities I know of. The vehicle for this thought experiment is a classic mathematical puzzle: the ant on a rubber rope.</p>
+
+<h2>The original puzzle</h2>
+
+<p>The ant on a rubber rope is one of those beautiful puzzles where the answer is completely counterintuitive. Here's the setup:</p>
+
+<p>An ant starts crawling along a taut rubber rope that is 1 km long. It moves at 1 cm per second relative to the rubber it's walking on. At the same time, the rope is being stretched uniformly at 1 km per second — so after 1 second the rope is 2 km long, after 2 seconds it's 3 km, and so on. The ant starts at one end. Will it ever reach the other?</p>
+
+<p>Your first instinct is probably: no chance. The rope is growing at 1 km/s and the ant is crawling at 1 cm/s — the far end is racing away at almost the speed of the rope's stretching. Surely the ant is doomed?</p>
+
+<p>But the answer is yes — the ant <em>always</em> reaches the end, no matter how fast the rope stretches, provided the stretching rate and the ant's speed are constant. It just might take an extraordinarily long time. In the classic version above, it takes about 8.9 × 10^43,421 years — a number with roughly 43,000 digits.</p>
+
+<p>The reason comes down to two key principles. First, because the rope stretches <em>uniformly</em> (every part of it stretches equally), any progress the ant makes is preserved as a <em>fraction</em> of the rope's length. A stretch of the whole rope doesn't send the ant backwards; it carries the ant along with it. Second, the fractional speed of the ant — its speed divided by the current rope length — decreases as the rope grows, but the total fractional distance it can cover is unbounded, like the harmonic series (1 + 1/2 + 1/3 + 1/4 + ... which diverges to infinity).</p>
+
+<p>The mathematical solution is elegant. For a rope of initial length L₀ stretching at rate v_s, with an ant moving at speed v_a, the time for the ant to reach the end is:</p>
+
+<p><strong>t = (L₀ / v_s) × (e^(v_s/v_a) − 1)</strong></p>
+
+<p>The key insight is that the answer involves an <em>exponential</em> of the ratio v_s/v_a. Make this ratio enormous, and the answer becomes spectacularly large. So let's make it as enormous as physics will allow.</p>
+
+<h2>The cosmic version — setting up the problem</h2>
+
+<p>Here's how I pushed every parameter to its physical extreme:</p>
+
+<p><strong>The ant:</strong> A Planck-length creature — the smallest meaningful size in physics, ℓ_P = 1.616 × 10⁻³⁵ m. This is the scale at which our current theories of space and time break down. No smaller length has any operational meaning.</p>
+
+<p><strong>The rope:</strong> It wraps around the circumference of the observable universe. The observable universe has a diameter of about 93 billion light-years, which is roughly 8.8 × 10²⁶ m. The circumference is therefore L₀ = π × 8.8 × 10²⁶ ≈ 2.77 × 10²⁷ m.</p>
+
+<p><strong>The stretching rate:</strong> Inspired by cosmic inflation — the extraordinary period of exponential expansion in the first moments after the Big Bang. During inflation, space doubled in size in roughly 10⁻³⁷ seconds. I'll have the rope double in the first 10⁻³⁷ seconds (adding L₀ to its length), then continue stretching at that same linear rate. This gives a stretching speed of v_s = L₀ / 10⁻³⁷ ≈ 2.77 × 10⁶⁴ m/s — about 10⁵⁶ times the speed of light. Physically absurd, of course, but inflation itself was exactly this kind of absurdity.</p>
+
+<p><strong>The ant's pace:</strong> After the rope starts stretching, the ant waits for the heat death of the universe before taking its first step. The heat death — the point at which entropy has maximised and all thermodynamic processes have ceased — is estimated to occur at around 10¹⁰⁶ years, or about 3.15 × 10¹¹³ seconds. The ant then takes one Planck-length step every heat-death-timescale. This gives a speed of v_a = ℓ_P / T_step ≈ 1.616 × 10⁻³⁵ / 3.15 × 10¹¹³ ≈ 5.13 × 10⁻¹⁴⁹ m/s.</p>
+
+<p>To summarise the setup:</p>
+
+<p>
+  Initial rope length: L₀ ≈ 2.77 × 10²⁷ m<br />
+  Stretching rate: v_s ≈ 2.77 × 10⁶⁴ m/s<br />
+  Ant's speed: v_a ≈ 5.13 × 10⁻¹⁴⁹ m/s
+</p>
+
+<h2>The calculation</h2>
+
+<p>After the initial doubling, the rope has length 2L₀ and stretches at constant rate v_s. At time t (measured from when the ant starts walking), the rope length is L(t) = 2L₀ + v_s · t.</p>
+
+<p>The classic solution gives the time for the ant to reach the end as:</p>
+
+<p><strong>t = (2L₀ / v_s) × (e^(v_s/v_a) − 1)</strong></p>
+
+<p>The critical quantity is the ratio v_s / v_a:</p>
+
+<p>v_s / v_a = (2.77 × 10⁶⁴) / (5.13 × 10⁻¹⁴⁹) ≈ 5.4 × 10²¹²</p>
+
+<p>So the answer involves e raised to the power of 5.4 × 10²¹². To convert to a power of 10, we use the fact that e^N = 10^(N / ln 10) = 10^(N / 2.303):</p>
+
+<p>e^(5.4 × 10²¹²) = 10^(2.34 × 10²¹²)</p>
+
+<p>The prefactor 2L₀ / v_s ≈ 2 × 10⁻³⁷ seconds is utterly negligible — adding log₁₀(2 × 10⁻³⁷) ≈ −36.7 to an exponent of 2.34 × 10²¹² changes absolutely nothing.</p>
+
+<p>So the final answer is:</p>
+
+<p><strong>t ∼ 10^(10^212.37) seconds</strong></p>
+
+<p>Converting to years (dividing by ≈ 3 × 10⁷) makes no difference at this scale. This number is so large that the difference between seconds and years is completely invisible — it would only shift the exponent by about 7, and the exponent itself is a number with 212 digits.</p>
+
+<h2>Putting the number in perspective</h2>
+
+<p>Let me try to give some sense of what 10^(10^212) actually means. I'll warn you upfront: all analogies fail spectacularly. That's rather the point.</p>
+
+<p><strong>How many digits does it have?</strong> When you write out this number, it has roughly 10²¹² digits. That's a 1 followed by 212 zeroes worth of digits. For comparison, the number of particles in the observable universe is about 10⁸⁰ — which is a number with 80 digits. Our number has 10²¹² digits, which itself has 212 digits. The number of digits is already incomparably larger than the number of particles in the universe.</p>
+
+<p><strong>Could you write it down?</strong> If you tried to write out our number one digit per Planck-length-sized square, you would need approximately 10¹³² observable universes just to fit the digits. The observable universe has a volume of roughly 4 × 10⁸⁰ cubic metres; each Planck-area tile is (1.616 × 10⁻³⁵)² ≈ 2.6 × 10⁻⁷⁰ m². That gives about 10¹⁵⁰ tiles per observable universe — and we need 10²¹² tiles in total. So you need 10⁶² observable universes just for a single layer, and stacking them won't help much either.</p>
+
+<p><strong>Compared to a googolplex:</strong> A googolplex is 10^(10^100) — already so large that it cannot be written out even if every particle in the observable universe were a digit. Our number has 10²¹² in the exponent where the googolplex has 10¹⁰⁰. Our number is roughly a googolplex raised to the power of 10^112. A googolplex is essentially zero by comparison.</p>
+
+<p><strong>Compared to the original puzzle:</strong> The classic ant-on-a-rope answer of ~10^43,421 years is a number with merely about 43,000 digits. Our number has 10²¹² digits. You could write out the entire classic answer 10^208 times and still not approach the number of digits in our answer. The classic answer is, in a very real sense, nothing.</p>
+
+<p><strong>Stacking universes:</strong> There are roughly 10⁸⁰ particles in the observable universe. Our number's <em>exponent</em> — that is, just the 10²¹² part — exceeds the number of particles in the universe by a factor of 10¹³². Even if every particle in the universe were itself a universe (containing 10⁸⁰ particles), and every particle in those universes were also a universe, repeated 10¹³⁰ times over, you would still not reach our exponent. The stacking of universes within universes barely dents it.</p>
+
+<p><strong>Power towers:</strong> Consider the number 10^(10^(10^80)) — a power tower with the number of particles in the universe perched at the top. This is already incomprehensible. Our number requires 10²¹² in that slot — not 10⁸⁰, but 10²¹². These look similar on the page but are separated by an abyss.</p>
+
+<p><strong>Physical time comparison:</strong> The current age of the universe is about 1.4 × 10¹⁰ years. The time for all stellar black holes to evaporate via Hawking radiation is around 10¹⁰⁰ years — a googol years. Our number makes even a googol years look like a rounding error. The time our ant takes to reach the end of its rope towers above a googol years by a factor that itself has 10²¹² digits.</p>
+
+<h2>And yet, it's small</h2>
+
+<p>Here is the humbling punchline. Despite being constructed from the most extreme physical quantities in the known universe, our number is <em>vanishingly small</em> compared to numbers that arise naturally in pure mathematics.</p>
+
+<p><strong>Graham's number</strong> was introduced by mathematician Ronald Graham in 1977 as an upper bound in a problem in Ramsey theory — a branch of mathematics concerned with order and structure. It is defined using Knuth's up-arrow notation, a system invented specifically because ordinary exponentiation is hopelessly inadequate for describing it. A single up-arrow (↑) is exponentiation. Two up-arrows (↑↑) is a power tower. Three up-arrows is a power tower of power towers. Graham's number starts with four up-arrows and then iterates this in a way that makes the previous step look trivial, repeated 64 times.</p>
+
+<p>Our number — with its 10²¹² digits, its incomprehensible towers of exponents — doesn't appear anywhere in the definition of Graham's number. It's not even in the foothills. The number of digits in Graham's number, and the number of digits in <em>that</em> number, and so on, repeated more times than our number... still doesn't begin to describe it. Graham's number is so large that a number with 10²¹² digits is effectively zero by comparison.</p>
+
+<p><strong>TREE(3)</strong> is even more staggering. It comes from a theorem in combinatorial mathematics about labelled trees — the TREE sequence grows so rapidly that TREE(3) is not just larger than Graham's number, it is larger in a way that makes Graham's number look like zero. Mathematicians have proven it grows faster than any function that can be defined in certain formal systems. TREE(3) is so large that our entire framework for describing large numbers — up-arrow notation, recursion, everything — is completely inadequate.</p>
+
+<p>Physics gives us numbers that feel impossibly large — numbers that exceed anything we could ever hope to observe, measure, or even vaguely conceptualise. But mathematics can always go further. Our universe, vast and ancient and extreme as it is, barely scratches the surface of what numbers can be.</p>
+
+<p>The beauty of the ant on a rubber rope is that it connects a tangible physical picture — a tiny creature on a slowly stretching string — to these dizzying heights of abstraction. We can draw it, explain it to a child, and feel intuitively why the ant eventually wins. And yet, push the parameters to their physical extremes, and the answer hurtles past anything our universe could contain or describe.</p>
+
+<p>Even then, the mathematicians win.</p>

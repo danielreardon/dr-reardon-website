@@ -1,0 +1,176 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Daniel Reardon',
+  date: '2026-03-30',
+  title: 'The largest number I could think of',
+  description:
+    'What is the largest number you can construct using only real physical quantities? I challenged myself to find out by pushing the ant-on-a-rubber-rope puzzle to its absolute extreme — filling the entire observable universe with Planck-scale rope, sustaining inflationary expansion until the heat death of the universe, and letting a Planck-length ant take its first step only at the end of time. The result is a triple power tower: roughly 10^(10^(10^150)) seconds. And yet, it does not even register on the scale of Graham\'s number.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+<p>As a physicist, I spend a lot of time thinking about very large numbers. The universe is 13.8 billion years old. The nearest star is about 40 trillion kilometres away. The number of atoms in a human body is roughly 7 × 10²⁷. These numbers sound large, but to a physicist they are thoroughly mundane — you just shift the decimal point around and they collapse into something manageable.</p>
+
+<p>So I asked myself: what is the <em>largest number</em> I can construct using only quantities that are real and physically meaningful? Not arbitrary — no "a googolplex to the power of a googolplex" — but built from the actual constants of nature and the real history of the cosmos. The answer turns out to be wilder than I expected. And then humbling.</p>
+
+<h2>The ant on a rubber rope</h2>
+
+<p>The raw material for my construction is a beautiful mathematical puzzle called the <em>ant on a rubber rope</em>. It goes like this:</p>
+
+<p>An ant starts crawling along a taut rubber rope 1 kilometre long at a speed of 1 centimetre per second. At the same time, the rope starts stretching uniformly at a rate of 1 kilometre per second — so after 1 second the rope is 2 km long, after 2 seconds it is 3 km long, and so on. Will the ant ever reach the end?</p>
+
+<p>Intuitively, the answer seems like no. The rope is growing by a kilometre every second; the ant is moving at 1 cm per second. The ant is hopelessly behind. But the answer is <em>yes</em> — the ant always reaches the end, no matter how extreme the ratio of stretching to walking speed. The key insight is that the stretching acts on every part of the rope, including the part behind the ant. So the ant's <em>fractional progress</em> along the rope is never lost. At each moment, the ant advances a tiny fraction of the rope's length; these fractions sum like a harmonic series, which always diverges. Given enough time, the sum exceeds 1 and the ant arrives.</p>
+
+<p>For the classic 1 km rope, the arrival time works out to about 8.9 × 10⁴³⁴²¹ years. That already sounds ridiculous, but I wanted to go much, much further.</p>
+
+<h2>The formula</h2>
+
+<p>For a rope of initial length L₀ that grows linearly at rate v_s (metres per second), with an ant walking at speed v_a, the arrival time is:</p>
+
+<p><strong>t = (L₀ / v_s) × (e^(v_s/v_a) − 1)</strong></p>
+
+<p>When v_s/v_a is enormous, the −1 is negligible, and this simplifies to:</p>
+
+<p><strong>t ≈ (L₀ / v_s) × e^(v_s/v_a)</strong></p>
+
+<p>The prefactor L₀/v_s is just a number with ordinary-sized exponents. All the action is in the <strong>e^(v_s/v_a)</strong> term. To make the answer astronomical, we need to make the ratio v_s/v_a as large as possible. That means making the stretching speed as fast as physically possible, and the ant's walking speed as slow as physically possible — and using the most extreme version of both that the laws of physics will allow.</p>
+
+<h2>Setting up the most extreme version</h2>
+
+<h3>The rope: every Planck volume of the observable universe</h3>
+
+<p>In the original problem I considered, the rope wrapped around the circumference of the observable universe. But we can do so much better. Let's fill the <em>entire volume</em> of the observable universe with rope — every last Planck volume of it — and pack it in as tightly as Planck-scale physics allows.</p>
+
+<p>The observable universe has a radius of about 4.4 × 10²⁶ m, giving a volume of roughly (4/3)π(4.4 × 10²⁶)³ ≈ 3.6 × 10⁸⁰ m³.</p>
+
+<p>The Planck length is ℓ_P = 1.616 × 10⁻³⁵ m, so a Planck volume is ℓ_P³ ≈ 4.22 × 10⁻¹⁰⁵ m³. The number of Planck volumes in the observable universe is therefore about 3.6 × 10⁸⁰ / 4.22 × 10⁻¹⁰⁵ ≈ 8.5 × 10¹⁸⁴.</p>
+
+<p>Now give the rope a cross-section of one Planck area (ℓ_P² ≈ 2.61 × 10⁻⁷⁰ m²). Packing this rope to fill the entire volume gives a total rope length of:</p>
+
+<p><strong>L₀ = Volume / ℓ_P² = 3.6 × 10⁸⁰ / 2.61 × 10⁻⁷⁰ ≈ 1.38 × 10¹⁵⁰ m</strong></p>
+
+<p>So our rope is about 10¹⁵⁰ metres long — almost incomprehensibly more than the circumference of the observable universe (around 2.8 × 10²⁷ m).</p>
+
+<h3>The stretching: inflation all the way to the heat death of the universe</h3>
+
+<p>During the inflationary epoch in the very early universe, space expanded at a staggering rate — doubling in size approximately every 10⁻³⁷ seconds. In the original version of this problem, I had the rope double once at this rate and then continue at a fixed linear rate. But we can do far better: let's sustain that exponential, inflation-rate doubling all the way from the Big Bang until the <em>heat death of the universe</em> at roughly 10¹⁰⁶ years.</p>
+
+<p>The heat death timescale is approximately 10¹⁰⁶ years ≈ 3.15 × 10¹¹³ seconds. The number of doublings over this time is:</p>
+
+<p><strong>N = 3.15 × 10¹¹³ s / 10⁻³⁷ s = 3.15 × 10¹⁵⁰ doublings</strong></p>
+
+<p>After all these doublings, the rope has length L₀ × 2^(3.15 × 10¹⁵⁰). Converting:</p>
+
+<p>2^(3.15 × 10¹⁵⁰) = 10^(3.15 × 10¹⁵⁰ × log₁₀2) = 10^(9.48 × 10¹⁴⁹)</p>
+
+<p>So the rope length at the end of inflation is approximately 10¹⁵⁰ × 10^(9.48 × 10¹⁴⁹) ≈ 10^(9.48 × 10¹⁴⁹) m (the initial 10¹⁵⁰ is negligible compared to the exponent).</p>
+
+<h3>Transitioning to linear growth</h3>
+
+<p>At the heat death, inflation stops and the rope continues stretching at a constant linear rate equal to the instantaneous rate at the end of inflation. During exponential doubling with doubling time τ = 10⁻³⁷ s, the rope grows at rate:</p>
+
+<p>v_s(t) = L(t) × ln2 / τ</p>
+
+<p>At the end of inflation, L = 10^(9.48 × 10¹⁴⁹) m, so:</p>
+
+<p><strong>v_s = 10^(9.48 × 10¹⁴⁹) × 0.693 / 10⁻³⁷ ≈ 10^(9.48 × 10¹⁴⁹ + 37) ≈ 10^(9.48 × 10¹⁴⁹) m/s</strong></p>
+
+<p>(The +37 in the exponent is negligible compared to the exponent of order 10¹⁴⁹.)</p>
+
+<h3>The ant: one Planck step per heat-death timescale</h3>
+
+<p>The ant is Planck-scale: it takes one step of length ℓ_P = 1.616 × 10⁻³⁵ m. But it doesn't start walking until the heat death of the universe — that is, it waits the full 10¹⁰⁶ years before taking its very first step. Each subsequent step also takes 10¹⁰⁶ years. So its effective walking speed is:</p>
+
+<p><strong>v_a = ℓ_P / T_step = 1.616 × 10⁻³⁵ / 3.15 × 10¹¹³ ≈ 5.13 × 10⁻¹⁴⁹ m/s</strong></p>
+
+<h2>The calculation</h2>
+
+<h3>The critical ratio</h3>
+
+<p>The ratio that determines the size of our answer is v_s / v_a:</p>
+
+<p><strong>v_s / v_a = 10^(9.48 × 10¹⁴⁹) / (5.13 × 10⁻¹⁴⁹) ≈ 10^(9.48 × 10¹⁴⁹ + 149) ≈ 10^(9.48 × 10¹⁴⁹)</strong></p>
+
+<p>(Again, the +149 is negligible compared to the dominant term of order 10¹⁴⁹.)</p>
+
+<p>Let's call this X = 10^(9.48 × 10¹⁴⁹) ≈ 10^(10^149.98) ≈ 10^(10^150).</p>
+
+<h3>The final answer</h3>
+
+<p>From the rubber rope formula, t ≈ (L₀ / v_s) × e^(v_s/v_a) ≈ e^X. Converting from base e to base 10:</p>
+
+<p>e^X = 10^(X / ln10) = 10^(X × 0.434) = 10^(0.434 × 10^(9.48 × 10¹⁴⁹))</p>
+
+<p>Now, 0.434 × 10^(9.48 × 10¹⁴⁹) = 10^(log₁₀(0.434) + 9.48 × 10¹⁴⁹) = 10^(9.48 × 10¹⁴⁹ − 0.36) ≈ 10^(9.48 × 10¹⁴⁹)</p>
+
+<p>So the answer is:</p>
+
+<p><strong>t ≈ 10^(10^(9.48 × 10¹⁴⁹)) ≈ 10^(10^(10^149.98)) seconds</strong></p>
+
+<p>Rounding to the nearest power of ten in the tower, this is approximately:</p>
+
+<p><strong>t ≈ 10^(10^(10^150)) seconds</strong></p>
+
+<p>This is a <em>triple power tower</em>. In Knuth's up-arrow notation it can be written 10↑↑↑3 (approximately). The answer to the original problem — where I only wrapped the rope around the universe and doubled it once — was a mere double power tower, 10^(10^212). This new number has a double power tower just as its <em>exponent</em>. The upgrade in extremity is hard to overstate.</p>
+
+<h2>Putting the number into perspective</h2>
+
+<p>Let's try to appreciate just how mind-bending this number is.</p>
+
+<h3>How many digits does it have?</h3>
+
+<p>A number written as 10^N has N+1 digits. Our number is 10^(10^(10^150)), so the number of digits is 10^(10^150). That's a double power tower just for the digit count.</p>
+
+<p>You could not write down the number of digits even if you used every Planck volume of the observable universe to store one digit. The observable universe contains about 8.5 × 10¹⁸⁴ Planck volumes. But the digit count of our number is 10^(10^150). You'd need roughly 10^(10^150 − 185) separate observable universes just to store how many digits the number has. That many universes. Just for the digit count. Not even the number itself.</p>
+
+<h3>Compared to a googolplex</h3>
+
+<p>A googolplex is 10^(10^100) — often described as an unimaginably large number. Its exponent, 10^100, is a 1 followed by 100 zeros. Our number has an exponent of 10^(10^150). That exponent has 10^150 digits. The exponent of our number is itself a number with more digits than a googolplex has in its <em>entirety</em>. A googolplex is cosmically tiny compared to our number.</p>
+
+<h3>Compared to the original version of this problem</h3>
+
+<p>The original version — wrapping the rope around the circumference of the observable universe, doubling once, linear thereafter — gave an answer of about 10^(10^212). That number has 10^212 digits, which already seemed incredible. But our new answer is 10^(10^(10^150)). The exponent of the exponent of our new answer is 10^150, which has 10^150 ... well, it's a number with 150 digits. The exponent of the exponent of the new answer makes the entire original answer look like zero. 10^212 is utterly negligible compared to 10^(10^150).</p>
+
+<h3>Every physical ingredient is maxed out</h3>
+
+<p>There's no room to push further without going beyond physical reality. The rope is as long as it can be (every Planck volume of the observable universe). The stretching is as fast as it can be (inflation rate, sustained for as long as the universe exists). The ant is as slow as it can be (one Planck step per heat-death timescale). We've extracted every last drop of extremity from the physics.</p>
+
+<h2>And yet — it doesn't even register</h2>
+
+<p>Here is the humbling part. Despite all of that — the entire observable universe packed with rope, inflation sustained for the full lifetime of the cosmos, a Planck-scale ant taking one step per aeon — our answer of 10^(10^(10^150)) is <em>absolutely nothing</em> compared to the large numbers that arise naturally in mathematics.</p>
+
+<h3>Graham's number</h3>
+
+<p>Graham's number is a specific finite integer that arose in combinatorics — it was once cited in the Guinness Book of World Records as the largest number ever used in a serious mathematical proof. To even describe it, you need to first understand Knuth's up-arrow notation for iterated exponentiation:</p>
+
+<p>3↑3 = 3³ = 27<br/>
+3↑↑3 = 3^(3^3) = 3^27 = 7,625,597,484,987<br/>
+3↑↑↑3 = a power tower of 3s that is 7,625,597,484,987 levels tall<br/>
+3↑↑↑↑3 = a stack of power towers, where the number of levels in each tower is determined by the tower below it — and there are 3↑↑↑3 of them</p>
+
+<p>Already at 3↑↑↑3, we have a power tower of 3s that is nearly 7.6 trillion levels tall. Our number, 10^(10^(10^150)), is a power tower of height just 3. Even if we converted our triple power tower into a tower of 3s, it would still be a number with only 3 levels of exponentiation. And 3↑↑↑3 has trillions of levels. It is unimaginably larger than our number.</p>
+
+<p>But Graham's number doesn't even begin with 3↑↑↑3. It starts at 3↑↑↑↑3 — one arrow higher still, representing an operation that makes repeated power towers look tame. Then it iterates: define g₁ = 3↑↑↑↑3. Define g₂ = 3↑↑↑...↑3 where the number of arrows is g₁. Define g₃ the same way using g₂ as the number of arrows. Continue this process 64 times. Graham's number is g₆₄.</p>
+
+<p>At each step, the number of arrows is the result of the previous step — and the previous step already produces a number that transcends any power tower of any height. Then you do that 64 times.</p>
+
+<p>Our number 10^(10^(10^150)), for all its three levels of power towers built from the most extreme physical quantities in the universe, sits so far below Graham's number that it's not even worth the comparison numerically. No finite number of power towers — no matter how tall — can approach Graham's number from below. Our physics construction, which required the entire observable universe, the inflationary epoch, and the heat death of time, produces a number that is, in the grand scheme of mathematical large numbers, essentially zero.</p>
+
+<h3>TREE(3)</h3>
+
+<p>If Graham's number seems incomprehensibly larger than our physical construction, then TREE(3) is incomprehensibly larger than Graham's number in a way that is even harder to articulate.</p>
+
+<p>TREE(3) arises from a game in combinatorics called Kruskal's tree theorem. You build a sequence of finite trees with coloured nodes, subject to the rule that no tree in the sequence can be "embedded" in any later tree. With 1 colour (TREE(1)) the sequence can have length at most 1. With 2 colours (TREE(2)) it can have length at most 3. With 3 colours — TREE(3) — the maximum length of the sequence is a finite number, but that number grows faster than any function you could express using the up-arrow notation that defines Graham's number. Graham's number, despite requiring 64 layers of recursion with up-arrows, is small compared to TREE(3) in the same way that 3 is small compared to Graham's number — except even more extremely so.</p>
+
+<p>TREE(3) is not merely "a bigger number than Graham's number." It grows faster than any function in an entire broad class of recursive functions — a class that includes every function you could define using up-arrow notation. Graham's number lives in that class. TREE(3) laughs at the whole class.</p>
+
+<h3>The takeaway</h3>
+
+<p>There is a natural ceiling on the numbers you can reach by exploiting physical reality. To get a large number from physics, you need to express it using exponentiation — you raise something to a power, you iterate that, you build a power tower. Even if you fill the universe with rope, sustain cosmic inflation for the lifetime of the cosmos, and let a Planck-scale ant crawl one Planck step per aeon, you end up with a triple power tower. That's impressive. But it's still just exponentiation, applied three times.</p>
+
+<p>Mathematics has no such ceiling. Graham's number transcends exponentiation, transcends tetration (iterated exponentiation), transcends pentation (iterated tetration), and iterates through 64 layers of increasingly incomprehensible operations. TREE(3) transcends all of that. There are numbers beyond TREE(3) that make it look small in turn.</p>
+
+<p>The universe, for all its enormity, constrains us to a tiny corner of the number line. The ant on its cosmic rope, carrying the weight of the entire observable universe, inflation, and the heat death of time, ends its journey at a number that mathematics would round to zero.</p>
+
+<p>I find that simultaneously humbling and wonderful.</p>

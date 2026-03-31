@@ -20,7 +20,7 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 <p>An ant starts crawling along a taut rubber rope 1 kilometre long at a speed of 1 centimetre per second. At the same time, the rope starts stretching uniformly at a rate of 1 kilometre per second — so after 1 second the rope is 2 km long, after 2 seconds it is 3 km long, and so on. Will the ant ever reach the end?</p>
 
-<p>Intuitively, the answer seems like no. The rope is growing by a kilometre every second; the ant is moving at 1 cm per second. The ant is hopelessly behind. But the answer is <em>yes</em> — the ant always reaches the end, no matter how extreme the ratio of stretching to walking speed. The key insight is that the stretching acts on every part of the rope, including the part behind the ant. So the ant's <em>fractional progress</em> along the rope is never lost. At each moment, the ant advances a tiny fraction of the rope's length; these fractions sum like a harmonic series, which always diverges. Given enough time, the sum exceeds 1 and the ant arrives.</p>
+<p>Intuitively, the answer seems like no. The rope is growing by a kilometre every second; the ant is moving at 1 cm per second. The ant is hopelessly behind. But the answer is <em>yes</em> — the ant always reaches the end, no matter how extreme the ratio of stretching to walking speed. The key insight is that the stretching acts on every part of the rope, including the part behind the ant. So the ant's <em>fractional progress</em> along the rope is never lost. At each moment, the ant advances a tiny fraction of the rope's length; these fractions sum like a harmonic series, which always diverges. Given enough time, the sum exceeds 1 and the ant arrives at the end of the rope.</p>
 
 <p>For the classic 1 km rope, the arrival time works out to about 8.9 × 10⁴³⁴²¹ years. That already sounds ridiculous, but I wanted to go much, much further.</p>
 
@@ -34,13 +34,13 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 <p><strong>t ≈ (L₀ / v_s) × e^(v_s/v_a)</strong></p>
 
-<p>The prefactor L₀/v_s is just a number with ordinary-sized exponents. All the action is in the <strong>e^(v_s/v_a)</strong> term. To make the answer astronomical, we need to make the ratio v_s/v_a as large as possible. That means making the stretching speed as fast as physically possible, and the ant's walking speed as slow as physically possible — and using the most extreme version of both that the laws of physics will allow.</p>
+<p>The prefactor L₀/v_s is just a number with ordinary-sized exponents. All the action is in the <strong>e^(v_s/v_a)</strong> term. To make the answer beyond astronomical, we need to make the ratio v_s/v_a as large as possible. That means making the stretching speed as fast as physically possible, and the ant's walking speed as slow as physically possible — and using the most extreme version of both that the laws of physics will allow.</p>
 
 <h2>Setting up the most extreme version</h2>
 
 <h3>The rope: every Planck volume of the observable universe</h3>
 
-<p>In the original problem I considered, the rope wrapped around the circumference of the observable universe. But we can do so much better. Let's fill the <em>entire volume</em> of the observable universe with rope — every last Planck volume of it — and pack it in as tightly as Planck-scale physics allows.</p>
+<p>We first need to imagine the largest rope possible. Let's fill the <em>entire volume</em> of the observable universe with rope — every last Planck volume of it — to pack it in as tightly as physics could allow.</p>
 
 <p>The observable universe has a radius of about 4.4 × 10²⁶ m, giving a volume of roughly (4/3)π(4.4 × 10²⁶)³ ≈ 3.6 × 10⁸⁰ m³.</p>
 
@@ -50,11 +50,11 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 <p><strong>L₀ = Volume / ℓ_P² = 3.6 × 10⁸⁰ / 2.61 × 10⁻⁷⁰ ≈ 1.38 × 10¹⁵⁰ m</strong></p>
 
-<p>So our rope is about 10¹⁵⁰ metres long — almost incomprehensibly more than the circumference of the observable universe (around 2.8 × 10²⁷ m).</p>
+<p>So our rope starts at about 10¹⁵⁰ metres long. We have a name for this number. It's one hundred quindecillion googol metres. </p>
 
 <h3>The stretching: inflation all the way to the heat death of the universe</h3>
 
-<p>During the inflationary epoch in the very early universe, space expanded at a staggering rate — doubling in size approximately every 10⁻³⁷ seconds. In the original version of this problem, I had the rope double once at this rate and then continue at a fixed linear rate. But we can do far better: let's sustain that exponential, inflation-rate doubling all the way from the Big Bang until the <em>heat death of the universe</em> at roughly 10¹⁰⁶ years.</p>
+<p>During the inflationary epoch in the very early universe, space expanded at a staggering rate — doubling in size approximately every 10⁻³⁷ seconds. Let's subject our hope for a exponential expansion at this inflation-rate, doubling all the way from now until the <em>heat death of the universe</em> at roughly 10¹⁰⁶ years.</p>
 
 <p>The heat death timescale is approximately 10¹⁰⁶ years ≈ 3.15 × 10¹¹³ seconds. The number of doublings over this time is:</p>
 
